@@ -19,7 +19,7 @@ test("The email input is present", () => {
 });
 
 test("Are all 3 inputs working properly?", async () => {
-    const { getByLabelText, getByRole, getByTestId, findByText } = render(<ContactForm />);
+    const { getByLabelText, getByRole, getByTestId, findByText, findAllByText } = render(<ContactForm />);
 
     const firstNameInput = getByLabelText(/first name*/i);
     const lastNameInput = getByLabelText(/last name*/i);
@@ -40,7 +40,9 @@ test("Are all 3 inputs working properly?", async () => {
 
     fireEvent.click(submitButton);
 
-    await findByText(/marvin/i);
+    await findAllByText(/marv/i);
+    await findByText(/lewis/i);
+    await findAllByText(/email/i);
 
 });
 
